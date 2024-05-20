@@ -1,6 +1,11 @@
-#--------#
-# Global #
-#--------#
+---
+## Global
+
+# Change current context
+kubectl config use-context <context_name>
+
+# Change current namespace
+kubectl config set-context --current --namespace <namespace>
 
 # Get resource in every namespace
 kubectl get <resource> -A
@@ -9,9 +14,8 @@ kubectl get <resource> -A
 kubectl get <resource> -o wide
 
 
-#------#
-# Pods #
-#------#
+---
+## Pods
 
 # Get pod by node
 kubectl get pods -A -o wide --field-selector spec.nodeName=<node>
@@ -23,17 +27,17 @@ kubectl get pods -A -o wide -l <key>=<value>
 kubectl get pod --show-labels
 
 
-#-------#
-# Nodes #
-#-------#
+---
+## Nodes
+
 
 # Get node labels
 kubectl get nodes --show-labels
 
 
-#---------#
-# Secrets #
-#---------#
+---
+## Secrets
+
 
 # Create and apply secret from file
 kubectl create secret -n <namespace> generic <secret_name> \
@@ -46,9 +50,9 @@ kubectl create secret -n <namespace> generic <secret_name> \
 kubectl -n <namespace> get secret <secret_name> -o jsonpath="{.data.<data_field>}" | base64 --decode
 
 
-#---------#
-# Network #
-#---------#
+---
+## Network
+
 
 # Forward port
 kubectl port-forward -n <namespace> svc/<service_name> <host_port>:<service_port>

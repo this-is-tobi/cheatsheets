@@ -8,6 +8,7 @@ The following cheatsheets are available :
 
 | Sheet name                  | Description                 |
 | --------------------------- | --------------------------- |
+| [helm](./sheets/helm)       | useful commands for helm    |
 | [kubectl](./sheets/kubectl) | useful commands for kubectl |
 
 ## Import

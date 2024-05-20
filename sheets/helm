@@ -1,0 +1,5 @@
+---
+## Global
+
+# Update chart values
+helm -n <namespace> upgrade --reuse-values --set <key>=<value> <release_name> <chart>
