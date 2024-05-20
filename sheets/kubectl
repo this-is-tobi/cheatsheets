@@ -1,0 +1,55 @@
+#--------#
+# Global #
+#--------#
+
+# Get resource in every namespace
+kubectl get <resource> -A
+
+# Show more resource infos
+kubectl get <resource> -o wide
+
+
+#------#
+# Pods #
+#------#
+
+# Get pod by node
+kubectl get pods -A -o wide --field-selector spec.nodeName=<node>
+
+# Get pod by label
+kubectl get pods -A -o wide -l <key>=<value>
+
+# Get pod labels
+kubectl get pod --show-labels
+
+
+#-------#
+# Nodes #
+#-------#
+
+# Get node labels
+kubectl get nodes --show-labels
+
+
+#---------#
+# Secrets #
+#---------#
+
+# Create and apply secret from file
+kubectl create secret -n <namespace> generic <secret_name> \
+  --from-file=<file_name>.yaml \
+  --dry-run=client \
+  -o yaml \
+  | kubectl apply -f -
+
+# Read secret
+kubectl -n <namespace> get secret <secret_name> -o jsonpath="{.data.<data_field>}" | base64 --decode
+
+
+#---------#
+# Network #
+#---------#
+
+# Forward port
+kubectl port-forward -n <namespace> svc/<service_name> <host_port>:<service_port>
+kubectl port-forward -n <namespace> pod/<pod_name> <host_port>:<pod_port>
