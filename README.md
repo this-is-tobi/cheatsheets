@@ -6,10 +6,12 @@ A set of personal cheat sheets ready to use with [cheat](https://github.com/chea
 
 The following cheatsheets are available :
 
-| Sheet name                  | Description                 |
-| --------------------------- | --------------------------- |
-| [helm](./sheets/helm)       | useful commands for helm    |
-| [kubectl](./sheets/kubectl) | useful commands for kubectl |
+| Sheet name                        | Description                    |
+| --------------------------------- | ------------------------------ |
+| [helm](./sheets/helm)             | useful commands for helm       |
+| [kubectl](./sheets/kubectl)       | useful commands for kubectl    |
+| [pg_dump](./sheets/pg_dump)       | useful commands for pg_dump    |
+| [pg_restore](./sheets/pg_restore) | useful commands for pg_restore |
 
 ## Import
 
