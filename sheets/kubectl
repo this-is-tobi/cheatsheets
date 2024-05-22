@@ -1,4 +1,3 @@
----
 ## Global
 
 # Change current context
@@ -30,14 +29,12 @@ kubectl get pod --show-labels
 ---
 ## Nodes
 
-
 # Get node labels
 kubectl get nodes --show-labels
 
 
 ---
 ## Secrets
-
 
 # Create and apply secret from file
 kubectl create secret -n <namespace> generic <secret_name> \
@@ -52,7 +49,6 @@ kubectl -n <namespace> get secret <secret_name> -o jsonpath="{.data.<data_field>
 
 ---
 ## Network
-
 
 # Forward port
 kubectl port-forward -n <namespace> svc/<service_name> <host_port>:<service_port>

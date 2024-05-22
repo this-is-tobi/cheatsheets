@@ -1,4 +1,3 @@
----
 ## Global
 
 # Install chart
@@ -13,6 +12,9 @@ helm -n <namespace> upgrade --reuse-values --set <key>=<value> <release_name> <c
 
 # Update helm repositories
 helm repo update
+
+# Add helm repository
+helm repo add <repo_name> <repo_url>
 
 # Search for a chart within local repositories
 helm search repo <repo_name>
