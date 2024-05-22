@@ -1,5 +1,24 @@
 ---
 ## Global
 
+# Install chart
+helm -n <namespace> upgrade --install --dependency-update --values <values_file> <release_name> <chart>
+
 # Update chart values
 helm -n <namespace> upgrade --reuse-values --set <key>=<value> <release_name> <chart>
+
+
+---
+## Repositories / Chart
+
+# Update helm repositories
+helm repo update
+
+# Search for a chart within local repositories
+helm search repo <repo_name>
+
+# Search for a chart within artifacthub
+helm search hub <repo_name> --max-col-width 75
+
+# List all chart versions
+helm search repo <repo_name>/<chart_name> --versions
