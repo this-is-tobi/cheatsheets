@@ -12,6 +12,13 @@ kubectl get <resource> -A
 # Show more resource infos
 kubectl get <resource> -o wide
 
+# Apply resource from stdin
+cat <file> | kubectl apply -f -
+
+kubectl apply -f - <<EOF
+<-- insert YAML content here -->
+EOF
+
 
 ---
 ## Pods
