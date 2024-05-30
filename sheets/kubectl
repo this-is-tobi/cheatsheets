@@ -39,6 +39,11 @@ kubectl get pod --show-labels
 # Get node labels
 kubectl get nodes --show-labels
 
+# Remove workloads from a node
+kubectl drain <node_name> --ignore-daemonsets --delete-emptydir-data
+
+# Remove a node from the cluster
+kubectl delete node <node_name>
 
 ---
 ## Secrets
