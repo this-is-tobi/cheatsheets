@@ -12,6 +12,7 @@ The following cheatsheets are available :
 | [kubectl](./sheets/kubectl)       | useful commands for kubectl    |
 | [pg_dump](./sheets/pg_dump)       | useful commands for pg_dump    |
 | [pg_restore](./sheets/pg_restore) | useful commands for pg_restore |
+| [vim](./sheets/vim)               | useful commands for vim        |
 
 ## Import
 
