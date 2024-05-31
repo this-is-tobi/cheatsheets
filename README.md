@@ -10,6 +10,7 @@ The following cheatsheets are available :
 | --------------------------------- | ------------------------------ |
 | [helm](./sheets/helm)             | useful commands for helm       |
 | [kubectl](./sheets/kubectl)       | useful commands for kubectl    |
+| [openssl](./sheets/openssl)       | useful commands for openssl    |
 | [pg_dump](./sheets/pg_dump)       | useful commands for pg_dump    |
 | [pg_restore](./sheets/pg_restore) | useful commands for pg_restore |
 | [vim](./sheets/vim)               | useful commands for vim        |
