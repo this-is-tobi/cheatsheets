@@ -11,6 +11,7 @@ The following cheatsheets are available :
 | [ansible](./sheets/ansible)       | useful commands for ansible    |
 | [helm](./sheets/helm)             | useful commands for helm       |
 | [kubectl](./sheets/kubectl)       | useful commands for kubectl    |
+| [k9s](./sheets/k9s)               | useful commands for k9s        |
 | [openssl](./sheets/openssl)       | useful commands for openssl    |
 | [pg_dump](./sheets/pg_dump)       | useful commands for pg_dump    |
 | [pg_restore](./sheets/pg_restore) | useful commands for pg_restore |
