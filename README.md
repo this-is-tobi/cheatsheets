@@ -15,6 +15,7 @@ The following cheatsheets are available :
 | [openssl](./sheets/openssl)       | useful commands for openssl    |
 | [pg_dump](./sheets/pg_dump)       | useful commands for pg_dump    |
 | [pg_restore](./sheets/pg_restore) | useful commands for pg_restore |
+| [sql](./sheets/sql)               | SQL language reminder          |
 | [vim](./sheets/vim)               | useful commands for vim        |
 
 ## Import
