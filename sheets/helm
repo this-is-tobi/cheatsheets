@@ -1,7 +1,7 @@
 ## Global
 
 # Install chart
-helm -n <namespace> upgrade --install --dependency-update --values <values_file> <release_name> <chart>
+helm -n <namespace> upgrade --install --create-namespace --dependency-update --values <values_file> <release_name> <chart>
 
 # Update chart values
 helm -n <namespace> upgrade --reuse-values --set <key>=<value> <release_name> <chart>

@@ -17,9 +17,6 @@ ansible-playbook -i /path/to/my_inventory_file -u my_connection_user -k -f 3 -T 
 ---
 ## Advanced
 
-# Install python library when ansible is installed with brew
+# Install python library when ansible is installed with brew (one of the following depending on the system architecture)
 /opt/homebrew/Cellar/ansible/<ansible_version>/libexec/bin/python -m pip install <lib_name>
-
-Or
-
 /usr/local/Cellar/ansible/<ansible_version>/libexec/bin/python -m pip install <lib_name>
