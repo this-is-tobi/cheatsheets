@@ -48,11 +48,17 @@ kubectl exec <source_pod_name> -- tar cf - <source_container_path> | kubectl exe
 # Get node labels
 kubectl get nodes --show-labels
 
-# Remove workloads from a node
+# Make a node unschedulable and emove workloads from it
 kubectl drain <node_name> --ignore-daemonsets --delete-emptydir-data
+
+# Make a node unschedulable
+kubectl cordon <node_name>
 
 # Remove a node from the cluster
 kubectl delete node <node_name>
+
+# Make a node schedulable
+kubectl uncordon <node_name>
 
 
 ---
@@ -67,6 +73,9 @@ kubectl create secret -n <namespace> generic <secret_name> \
 
 # Read secret
 kubectl -n <namespace> get secret <secret_name> -o jsonpath="{.data.<data_field>}" | base64 --decode
+
+# Read secret (all fileds)
+kubectl -n <namespace> get secret <secret_name> -o yaml | yq '.data | map_values(. | @base64d)'
 
 
 ---
