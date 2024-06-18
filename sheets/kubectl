@@ -1,86 +1,156 @@
-## Global
+# Global
 
-# Change current context
+## Change current context
+
+```sh
 kubectl config use-context <context_name>
+```
 
-# Change current namespace
+## Change current namespace
+
+```sh
 kubectl config set-context --current --namespace <namespace>
+```
 
-# Get resource in every namespace
+## Get resource in every namespace
+
+```sh
 kubectl get <resource> -A
+```
 
-# Show more resource infos
+## Show more resource infos
+
+```sh
 kubectl get <resource> -o wide
+```
 
-# Apply resource from stdin
+## Apply resource from stdin
+
+```sh
 cat <file> | kubectl apply -f -
+```
 
+or
+
+```sh
 kubectl apply -f - <<EOF
 <-- insert YAML content here -->
 EOF
+```
 
 
 ---
-## Pods
+# Pods
 
-# Get pod by node
+## Get pod by node
+
+```sh
 kubectl get pods -A -o wide --field-selector spec.nodeName=<node>
+```
 
-# Get pod by label
+## Get pod by label
+
+```sh
 kubectl get pods -A -o wide -l <key>=<value>
+```
 
-# Get pod labels
+## Get pod labels
+
+```sh
 kubectl get pod --show-labels
+```
 
-# Copy file or directory from local to container
+## Copy file or directory from local to container
+
+```sh
 kubectl cp <local_path> <namespace>/<pod_name>:<container_path>
+```
 
-# Copy file or directory from container to local
+## Copy file or directory from container to local
+
+```sh
 kubectl cp <namespace>/<pod_name>:<container_path> <local_path>
+```
 
-# Copy file or directory from one container to another
+## Copy file or directory from one container to another
+
+```sh
 kubectl exec <source_pod_name> -- tar cf - <source_container_path> | kubectl exec -i <target_pod_name> -- tar xvf - -C <target_container_path>
+```
 
 
 ---
-## Nodes
+# Nodes
 
-# Get node labels
+## Get node labels
+
+```sh
 kubectl get nodes --show-labels
+```
 
-# Make a node unschedulable and emove workloads from it
+## Make a node unschedulable and emove workloads from it
+
+```sh
 kubectl drain <node_name> --ignore-daemonsets --delete-emptydir-data
+```
 
-# Make a node unschedulable
+## Make a node unschedulable
+
+```sh
 kubectl cordon <node_name>
+```
 
-# Remove a node from the cluster
+## Remove a node from the cluster
+
+```sh
 kubectl delete node <node_name>
+```
 
-# Make a node schedulable
+## Make a node schedulable
+
+```sh
 kubectl uncordon <node_name>
+```
 
 
 ---
-## Secrets
+# Secrets
 
-# Create and apply secret from file
+## Create and apply secret from file
+
+```sh
 kubectl create secret -n <namespace> generic <secret_name> \
   --from-file=<file_name>.yaml \
   --dry-run=client \
   -o yaml \
   | kubectl apply -f -
+```
 
-# Read secret
+## Read secret
+
+```sh
 kubectl -n <namespace> get secret <secret_name> -o jsonpath="{.data.<data_field>}" | base64 --decode
+```
 
-# Read secret (all fileds)
+## Read secret (all fileds)
+
+```sh
 kubectl -n <namespace> get secret <secret_name> -o yaml | yq '.data | map_values(. | @base64d)'
+```
 
 
 ---
-## Network
+# Network
 
-# Forward port
+## Forward port
+
+```sh
 kubectl port-forward -n <namespace> svc/<service_name> <host_port>:<service_port>
+```
+
+or
+
+
+```sh
 kubectl port-forward -n <namespace> pod/<pod_name> <host_port>:<pod_port>
+```

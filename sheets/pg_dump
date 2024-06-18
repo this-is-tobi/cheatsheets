@@ -1,4 +1,7 @@
-## Global
+# Global
 
-# Dump postgresql database
+## Dump postgresql database
+
+```sh
 PGPASSWORD=<db_password> pg_dump -Fc -U <db_user> -p <db_port> -h <db_host> <db_name> > <output_file>
+```
