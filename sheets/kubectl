@@ -88,7 +88,7 @@ kubectl exec <source_pod_name> -- tar cf - <source_container_path> | kubectl exe
 kubectl get nodes --show-labels
 ```
 
-## Make a node unschedulable and emove workloads from it
+## Make a node unschedulable and remove workloads from it
 
 ```sh
 kubectl drain <node_name> --ignore-daemonsets --delete-emptydir-data
