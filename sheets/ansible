@@ -19,6 +19,16 @@ ansible-playbook -i /path/to/my_inventory_file -u my_connection_user -k -f 3 -T 
 
 
 ---
+# Galaxy
+
+## Upgrade requirements
+
+```sh
+ansible-galaxy collection install -r <requirements_file> --upgrade
+```
+
+
+---
 # Advanced
 
 ## Install python library when ansible is installed with brew (one of the following depending on the system architecture)
