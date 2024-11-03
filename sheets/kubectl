@@ -78,6 +78,12 @@ kubectl cp <namespace>/<pod_name>:<container_path> <local_path>
 kubectl exec <source_pod_name> -- tar cf - <source_container_path> | kubectl exec -i <target_pod_name> -- tar xvf - -C <target_container_path>
 ```
 
+## Get pod quotas
+
+```sh
+kubectl get pods -A -o custom-columns='NAME:.metadata.name,CPU_REQ:spec.containers[].resources.requests.cpu,CPU_LIM:spec.containers[].resources.limits.cpu,MEM_REQ:spec.containers[].resources.requests.memory,MEM_LIM:spec.containers[].resources.limits.memory'
+```
+
 
 ---
 # Nodes
