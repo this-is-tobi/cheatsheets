@@ -122,6 +122,20 @@ kubectl uncordon <node_name>
 ---
 # Secrets
 
+## Create and apply secret
+
+```sh
+echo "apiVersion: v1
+kind: Secret
+type: Opaque 
+metadata:
+  name: <secret_name>
+  namespace: <namespace>
+stringData:
+  foo: bar" \
+  | kubectl apply -f -
+```
+
 ## Create and apply secret from file
 
 ```sh
