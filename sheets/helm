@@ -45,3 +45,35 @@ helm search hub <repo_name> --max-col-width 75
 ```sh
 helm search repo <repo_name>/<chart_name> --versions
 ```
+
+## Display remote chart readme
+
+```sh
+helm show readme <chart_name> --repo <repo_name>
+```
+
+## Display remote chart infos
+
+```sh
+helm show chart <chart_name> --repo <repo_name>
+```
+
+or
+
+
+```sh
+helm show chart oci://<repo_name>/<chart_name>
+```
+
+## Display remote chart values
+
+```sh
+helm show values <chart_name> --repo <repo_name>
+```
+
+or
+
+
+```sh
+helm show values oci://<repo_name>/<chart_name>
+```
