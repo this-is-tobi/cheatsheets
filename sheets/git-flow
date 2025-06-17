@@ -1,0 +1,108 @@
+# Git Flow
+
+## Branches
+
+Used branches are :
+- `feature branches` (format `fix/wrong-header-title`)
+- `hotfix branches` (format `hotfix/wrong-header-title`)
+- `develop`
+- `main`
+
+Feature branches should be merged into the `develop` branch, and the `develop` branch should be merged into the `main` branch (i.e. `feature > develop > main`).
+
+Hotfix branches should be merged directly into the `main` branch (i.e `hotfix > main`), and the `develop` branch should then be rebased on the `main` branch.
+
+
+## Conventional commits
+
+Commits should follow the specification of [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), it is possible to add the [VSCode extension](https://github.com/vivaxy/vscode-conventional-commits) to facilitate creating commits.
+
+A PR must be made with a branch up-to-date with the `develop` branch (use rebase to keep your branch up-to-date, not merge) before requesting a fusion, and the fusion must be requested into `develop`.
+
+### Cheatsheet
+
+The commit message should be structured as follows:
+
+```txt
+<type>[(<scope>)][!]: <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+Types definition:
+
+| Type       | Description                                                    |
+| ---------- | -------------------------------------------------------------- |
+| `build`    | Changes that affect the build system or external dependencies. |
+| `chore`    | Other changes that don't modify src or test files.             |
+| `ci`       | Changes to CI configuration files and scripts.                 |
+| `docs`     | Documentation only changes.                                    |
+| `feat`     | A new feature.                                                 |
+| `fix`      | A bug fix.                                                     |
+| `perf`     | A code change that improves performance.                       |
+| `refactor` | A code change that neither foxes a bug nor adds a feature.     |
+| `revert`   | Reverts a previous commit.                                     |
+| `style`    | Changes that do not affect the meaning of the code.            |
+| `test`     | Adding missing tests or correcting existing tests.             |
+
+## Git Cheatsheet
+
+#### Create a feature branch
+
+```sh
+# Put the head on the `develop` branch
+git checkout develop
+
+# Pull `develop` branch updates
+git pull
+
+# Create and checkout on the branch `feat/my-feature-description`
+git checkout -b feat/my-feature-description
+
+# Add files to the staging area
+git add -A
+
+# Create a commit
+git commit -m 'feat: my feature description'
+
+# Push the branch to remote
+git push --set-upstream origin feat/my-feature-description
+
+# Create a pull request
+gh pr create --fill --base main --head develop
+```
+
+#### Rebase a branch on another
+
+```sh
+# Put the head on the `develop` branch
+git checkout develop
+
+# Pull `develop` branch updates
+git pull
+
+# Put the head on the `feat/my-feature-description` branch
+git checkout feat/my-feature-description
+
+# Rebase the `feat/my-feature-description` branch on the recently pulled `develop` branch
+git rebase develop
+
+## Optionaly resolve conflicts
+
+# Push `feat/my-feature-description` updates to remote
+git push --force-with-lease --force-if-includes
+```
+
+#### Add files to the staging area with interactive mode
+
+```sh
+# Add all files interactively
+git add -A -p
+
+---
+
+# Add given file interactively
+git add -p path/to/file
+```
