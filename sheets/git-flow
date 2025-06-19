@@ -12,6 +12,25 @@ Feature branches should be merged into the `develop` branch, and the `develop` b
 
 Hotfix branches should be merged directly into the `main` branch (i.e `hotfix > main`), and the `develop` branch should then be rebased on the `main` branch.
 
+```txt
+*   1a2b3c4 Merge branch 'hotfix/urgent-fix' into develop
+| \
+|  * 5d6e7f8 (hotfix/urgent-fix) fix: fix critical issue
+| /
+*   9a8c7c8 Merge branch develop into main
+| \
+|  *   9a8b7c6 Merge branch 'fix/fix1' into develop
+|  | \
+|  |  * 3e4f5g6 (fix/fix1) fix: implement fix1
+|  | /
+|  *   8b7c6d5 Merge branch 'fix/feature1' into develop
+|  | \
+|  |  * 2a3b4c5 (feat/feature1) feat: implement feature1
+|  | /
+| /
+* 7f8g9h0 Initial commit
+```
+
 
 ## Conventional commits
 
@@ -19,7 +38,9 @@ Commits should follow the specification of [Conventional Commits](https://www.co
 
 A PR must be made with a branch up-to-date with the `develop` branch (use rebase to keep your branch up-to-date, not merge) before requesting a fusion, and the fusion must be requested into `develop`.
 
-### Cheatsheet
+## Cheatsheet
+
+### Conventional commits
 
 The commit message should be structured as follows:
 
@@ -47,7 +68,7 @@ Types definition:
 | `style`    | Changes that do not affect the meaning of the code.            |
 | `test`     | Adding missing tests or correcting existing tests.             |
 
-## Git Cheatsheet
+### Git
 
 #### Create a feature branch
 
