@@ -111,6 +111,40 @@ Types definition:
 
 ### Git
 
+#### Aliases
+
+`~/.gitconfig` :
+
+```txt
+[alias]
+  aa = add -A
+  aop = "!f() { git aa && git oopn && git push -f; }; f"
+  ap = add -p
+  br = branch
+  bv = br -vv
+  ci = commit
+  co = checkout
+  cm = commit -m
+  df = diff
+  ds = diff --staged
+  h = log --format='%C(yellow)%h%Creset %C(red)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --graph
+  lg = log --oneline --decorate --graph
+  oops = commit --amend
+  oopn = oops --no-edit
+  pf = push --force-with-lease --force-if-includes
+  psup = push --set-upstream origin $(git_current_branch)
+  rb = rebase
+  rba = rebase --abort
+  rbc = rebase --continue
+  rbi = rebase --interactive
+  sre = "!f() { git log -S$1 --pickaxe-regex ; }; f"
+  st = status
+  sw = switch
+  unstage = reset HEAD
+  us = unstage
+  root = rev-parse --show-toplevel
+```
+
 #### Create a feature branch
 
 ```sh
