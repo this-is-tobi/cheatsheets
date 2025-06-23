@@ -51,6 +51,8 @@ The git tree should looks something like this :
 * c383ae0 chore(global): initial commit
 ```
 
+> The previous example is using `Merge commit` method for illustration, it is recommended to use the `Rebase merge` method to keep a linear history (See. [merge methods on GitHub](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/about-merge-methods-on-github))
+
 ## Conventional commits
 
 Commits should follow the specification of [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), it is possible to add the [VSCode extension](https://github.com/vivaxy/vscode-conventional-commits) to facilitate creating commits.
@@ -59,25 +61,48 @@ A PR must be made with a branch up-to-date with the `develop` branch (use rebase
 
 ## Tags
 
-Tags should be managed in CI/CD using [release-please](https://github.com/googleapis/release-please) and [release-please-actions](https://github.com/googleapis/release-please-actions).
+Tags should be managed in CI/CD using [release-please](https://github.com/googleapis/release-please) and [release-please-actions](https://github.com/googleapis/release-please-actions). Each release or pre-release should trigger the build and release of packages, images, infrastructure deployment models, etc... depending on the application scope.
 
 ### Pre-release
 
 It should be trigger on every push on the `develop` branch.
 
-| Tag type | Pattern      |
-| -------- | ------------ |
-| Git      | `v1.2.3-rc4` |
-| Docker   | `1.2.3-rc4`  |
+| Tag type | Pattern       |
+| -------- | ------------- |
+| Git      | `v1.2.3-rc.4` |
+| Npm      | `1.2.3-rc.4`  |
+| Docker   | `1.2.3-rc.4`  |
+| Helm     | `1.2.3-rc.4`  |
 
 ### Release 
 
 It should be trigger on every push on the `main` branch.
 
-| Tag type | Pattern  |
-| -------- | -------- |
-| Git      | `v1.2.3` |
-| Docker   | `1.2.3`  |
+| Tag type | Tag Pattern |
+| -------- | ----------- |
+| Git      | `v1.2.3`    |
+| Npm      | `1.2.3`     |
+| Docker   | `1.2.3`     |
+| Helm     | `1.2.3`     |
+
+### Charts versionning rules
+
+- Each new pre-release / release of the application generates a new chart (version in `1.2.3-rc.4` format).
+- A new pre-release / release of the application increases the `major`, `minor` or `patch` version of the chart in a reciprocal way to the application increase (by adding `-rc.` as long as the next application version is not validated).
+- Each new release of the chart that is not related to the application is carried out with the latest stable image (version in `1.2.3` format).
+- Each new pre-release / release of the application should use the last stable chart version.
+- A major version of the chart can be increased without the application being involved if it is no longer compatible with the previous version.
+- A new version of the chart follows standard Semantic Versioning.
+
+## Environments
+
+| Env Name | ArgoCD Target Revision    | Description                                                            | Flow                            |
+| -------- | ------------------------- | ---------------------------------------------------------------------- | ------------------------------- |
+| personal | Git branch `feat/add-sso` | (Optional) Test active development in cloud condition.                 | -                               |
+| dev      | Helm chart `1.2.3-rc.4`   | Test active development in a shared environment working with the team. | `Step 1` - Technical validation |
+| qualif   | Helm chart `1.2.3-rc.4`   | Business tests for release validation.                                 | `Step 2` - Business validation  |
+| preprod  | Helm chart `1.2.3-rc.4`   | Stress tests, perfs tests, security tests in prod condition.           | `Step 2` - Technical validation |
+| prod     | Helm chart `1.2.3`        | Userland, where all the magic happen.                                  | `Step 3` - Shipping to users    |
 
 ## Cheatsheet
 
