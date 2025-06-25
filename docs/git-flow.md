@@ -2,7 +2,7 @@
 
 ## Branches
 
-Used branches are :
+Used branches are:
 - `main branch` *- pattern `main`*
 - `develop branch` *- pattern `develop`*
 - `feature branches` *- pattern `fix/wrong-header-title`*
@@ -12,7 +12,7 @@ Feature branches should be merged into the `develop` branch, and the `develop` b
 
 Hotfix branches should be merged directly into the `main` branch (i.e `hotfix > main`), and the `develop` branch should then be rebased on the `main` branch.
 
-The git tree should looks something like this :
+The git tree should looks something like this:
 
 ```txt
 *   ef33162 Merge branch 'release/v1.3.1' into main
@@ -59,13 +59,17 @@ Commits should follow the specification of [Conventional Commits](https://www.co
 
 A PR must be made with a branch up-to-date with the `develop` branch (use rebase to keep your branch up-to-date, not merge) before requesting a fusion, and the fusion must be requested into `develop`.
 
+## Semantic versionning
+
+All generated tags should follow the [Semantic Versioning specs](https://semver.org/).
+
 ## Tags
 
-Tags should be managed in CI/CD using [release-please](https://github.com/googleapis/release-please) and [release-please-actions](https://github.com/googleapis/release-please-actions). Each release or pre-release should trigger the build and release of packages, images, infrastructure deployment models, etc... depending on the application scope.
+Tags should be managed in CI/CD using [release-please](https://github.com/googleapis/release-please) and [release-please-actions](https://github.com/googleapis/release-please-actions). Each release or pre-release should trigger the build and release of packages, images, charts, etc... depending on the application scope.
 
 ### Pre-release
 
-It should be trigger on every push on the `develop` branch.
+It should be trigger on every push on the `develop` branch (and the pre-release PR merged by hand when ready).
 
 | Tag type | Pattern       |
 | -------- | ------------- |
@@ -76,7 +80,7 @@ It should be trigger on every push on the `develop` branch.
 
 ### Release 
 
-It should be trigger on every push on the `main` branch.
+It should be trigger on every push on the `main` branch (and the release PR merged by hand when ready).
 
 | Tag type | Tag Pattern |
 | -------- | ----------- |
@@ -85,7 +89,7 @@ It should be trigger on every push on the `main` branch.
 | Docker   | `1.2.3`     |
 | Helm     | `1.2.3`     |
 
-### Charts versionning rules
+### Helm charts rules
 
 - Each new pre-release / release of the application generates a new chart (version in `1.2.3-rc.4` format).
 - A new pre-release / release of the application increases the `major`, `minor` or `patch` version of the chart in a reciprocal way to the application increase (by adding `-rc.` as long as the next application version is not validated).
@@ -134,13 +138,22 @@ Types definition:
 | `style`    | Changes that do not affect the meaning of the code.            |
 | `test`     | Adding missing tests or correcting existing tests.             |
 
+### Semantic versionning
+
+Given a version number `MAJOR.MINOR.PATCH`, increment the:
+- `MAJOR` version when you make incompatible API changes
+- `MINOR` version when you add functionality in a backward compatible manner
+- `PATCH` version when you make backward compatible bug fixes
+
+> Additional labels for pre-release and build metadata are available as extensions to the `MAJOR.MINOR.PATCH` format (for example with `-rc.` > `MAJOR.MINOR.PATCH-rc.CANDIDATE`).
+
 ### Git
 
 #### Aliases
 
-`~/.gitconfig` :
+```ini
+# ~/.gitconfig
 
-```txt
 [alias]
   aa = add -A
   aop = "!f() { git aa && git oopn && git push -f; }; f"
