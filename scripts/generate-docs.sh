@@ -2,14 +2,15 @@
 
 mkdir -p ./docs
 
-rm ./docs/01-readme.md
-
 if [[ ! -f "./docs/01-readme.md" ]] || [[ $(! diff -q "./README.md" "./docs/01-readme.md") ]]; then
-  cat ./README.md | sed 's|./sheets/|../sheets/|g' > ./docs/01-readme.md
+  cat ./README.md | sed 's|./sheets/|./|g' > ./docs/01-readme.md
 fi
 
-for sheet in $(ls ./sheets); do
-  if [[ ! -f "./docs/${sheet}.md" ]] || [[ $(! diff -q "./sheets/${sheet}" "./docs/${sheet}.md") ]]; then
-    cp ./sheets/${sheet} ./docs/${sheet}.md
+find ./sheets -type f | while read -r sheet; do
+  relative_path="${sheet#./sheets/}"
+  target_file="./docs/${relative_path}.md"
+  mkdir -p "$(dirname "$target_file")"
+  if [[ ! -f "$target_file" ]] || [[ $(diff -q "$sheet" "$target_file") ]]; then
+    cp "$sheet" "$target_file"
   fi
 done
