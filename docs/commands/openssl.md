@@ -68,6 +68,12 @@ openssl s_client -connect 10.240.2.130:433
 openssl rand -base64 36
 ```
 
+OR
+
+```sh
+openssl rand -hex 36
+```
+
 ## High-quality options for openssl for symmetric (secret key) encryption
 
 > This is what knowledgable people consider a good set of options for 
