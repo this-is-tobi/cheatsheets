@@ -6,8 +6,8 @@ A set of personal cheat sheets ready to use with [cheat](https://github.com/chea
 
 ### Commands
 
-| Sheet name                          | Description                       |
-| ----------------------------------- | --------------------------------- |
+| Sheet name                                 | Description                       |
+| ------------------------------------------ | --------------------------------- |
 | [ansible](./commands/ansible)       | useful commands for ansible       |
 | [buildx](./commands/buildx)         | useful commands for docker buildx |
 | [helm](./commands/helm)             | useful commands for helm          |
@@ -20,8 +20,8 @@ A set of personal cheat sheets ready to use with [cheat](https://github.com/chea
 
 ### Notes
 
-| Sheet name                   | Description                   |
-| ---------------------------- | ----------------------------- |
+| Sheet name                          | Description                   |
+| ----------------------------------- | ----------------------------- |
 | [git-flow](./notes/git-flow) | standard git flow description |
 | [sql](./notes/sql)           | SQL language reminder         |
 

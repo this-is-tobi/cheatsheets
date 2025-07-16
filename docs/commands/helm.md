@@ -14,6 +14,12 @@ helm -n <namespace> upgrade --install --create-namespace --dependency-update --v
 helm -n <namespace> upgrade --reuse-values --set <key>=<value> <release_name> <chart>
 ```
 
+### Test chart template
+
+```sh
+helm template <release_name> <chart_path> --values <values_file> --debug
+```
+
 ## Repositories / Chart
 
 ### Update helm repositories
@@ -22,7 +28,7 @@ helm -n <namespace> upgrade --reuse-values --set <key>=<value> <release_name> <c
 helm repo update
 ```
 
-## Add helm repository
+### Add helm repository
 
 ```sh
 helm repo add <repo_name> <repo_url>
