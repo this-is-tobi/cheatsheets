@@ -5,7 +5,7 @@
 Used branches are :
 - `main branch` *- pattern `main`*
 - `develop branch` *- pattern `develop`*
-- `feature branches` *- pattern `fix/wrong-header-title`*
+- `feature branches` *- pattern `feat/wrong-header-title`*
 - `hotfix branches` *- pattern `hotfix/wrong-header-title`*
 
 Feature branches should be merged into the `develop` branch, and the `develop` branch should be merged into the `main` branch (i.e. `feature > develop > main`).
@@ -57,27 +57,45 @@ Commits should follow the specification of [Conventional Commits](https://www.co
 
 A PR must be made with a branch up-to-date with the `develop` branch (use rebase to keep your branch up-to-date, not merge) before requesting a fusion, and the fusion must be requested into `develop`.
 
-## Tags
+## Semmantic versioning
 
-Tags should be managed in CI/CD using [release-please](https://github.com/googleapis/release-please) and [release-please-actions](https://github.com/googleapis/release-please-actions).
+Tags should follow the [Semantic Versioning](https://semver.org/) specification and should be managed in CI/CD using tools like:
+- *apps / packages -* [release-please](https://github.com/googleapis/release-please) and [release-please-action](https://github.com/googleapis/release-please-action).
+- *helm chart -* [chart-releaser](https://github.com/helm/chart-releaser) and [chart-releaser-action](https://github.com/helm/chart-releaser-action).
 
-### Pre-release
+### Tag patterns
 
-It should be trigger on every push on the `develop` branch.
+#### Pre-release
 
-| Tag type | Pattern      |
-| -------- | ------------ |
-| Git      | `v1.2.3-rc4` |
-| Docker   | `1.2.3-rc4`  |
+Every push on the `develop` branch should trigger the creation or update of the pre-release PR.
 
-### Release 
+| Tag type | Pattern       |
+| -------- | ------------- |
+| Git      | `v1.2.3-rc.4` |
+| Npm      | `1.2.3-rc.4`  |
+| Docker   | `1.2.3-rc.4`  |
+| Helm     | `1.2.3-rc.4`  |
 
-It should be trigger on every push on the `main` branch.
+#### Release 
+
+Every push on the `develop` branch should trigger the creation or update of the release PR.
 
 | Tag type | Pattern  |
 | -------- | -------- |
 | Git      | `v1.2.3` |
+| Npm      | `1.2.3`  |
 | Docker   | `1.2.3`  |
+| Helm     | `1.2.3`  |
+
+### Helm
+
+Helm release should be triggered on every application pre-releease / release and should follow these rules:
+- Helm chart could be bumped independently from the target app version (following semver).
+- Helm chart should follow application version bump:
+  - Increase major tag if application got major tag bump.
+  - Increase minor tag if application got minor tag bump.
+  - Increase patch tag if application got patch tag bump.
+  - Increase rc tag if application got rc tag bump.
 
 ## Cheatsheet
 
@@ -108,6 +126,15 @@ Types definition:
 | `revert`   | Reverts a previous commit.                                     |
 | `style`    | Changes that do not affect the meaning of the code.            |
 | `test`     | Adding missing tests or correcting existing tests.             |
+
+### Semmantic versioning
+
+Given a version number `MAJOR.MINOR.PATCH`, increment the:
+- `MAJOR` version when you make incompatible API changes.
+- `MINOR` version when you add functionality in a backward compatible manner.
+- `PATCH` version when you make backward compatible bug fixes.
+
+> Additional labels for pre-release and build metadata are available as extensions to the `MAJOR.MINOR.PATCH` format (ex: `MAJOR.MINOR.PATCH-rc.RELEASE_CANDIDATE` - `1.2.3-rc.4`).
 
 ### Git
 
