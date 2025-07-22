@@ -10,6 +10,7 @@ A set of personal cheat sheets ready to use with [cheat](https://github.com/chea
 | ------------------------------------------ | --------------------------------- |
 | [ansible](./commands/ansible)       | useful commands for ansible       |
 | [buildx](./commands/buildx)         | useful commands for docker buildx |
+| [git](./commands/git)               | useful commands for git           |
 | [helm](./commands/helm)             | useful commands for helm          |
 | [k9s](./commands/k9s)               | useful commands for k9s           |
 | [kubectl](./commands/kubectl)       | useful commands for kubectl       |
