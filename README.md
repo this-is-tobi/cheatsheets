@@ -13,6 +13,7 @@ A set of personal cheat sheets ready to use with [cheat](https://github.com/chea
 | [buildx](./sheets/commands/buildx)         | useful commands for docker buildx |
 | [gh](./sheets/commands/gh)                 | useful commands for gh            |
 | [git](./sheets/commands/git)               | useful commands for git           |
+| [gpg](./sheets/commands/gpg)               | useful commands for gpg           |
 | [helm](./sheets/commands/helm)             | useful commands for helm          |
 | [k9s](./sheets/commands/k9s)               | useful commands for k9s           |
 | [kubectl](./sheets/commands/kubectl)       | useful commands for kubectl       |
