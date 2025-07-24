@@ -51,6 +51,8 @@ The git tree should looks something like this :
 * c383ae0 chore(global): initial commit
 ```
 
+> The previous example the `commit merge` strategy is used to get a visual representation of the flow but it is recommended to use `rebase merge` or `squash merge` strategy to get a linear history and as recommended in the [release-please readme](https://github.com/googleapis/release-please?tab=readme-ov-file#linear-git-commit-history-use-squash-merge).
+
 ## Conventional commits
 
 Commits should follow the specification of [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), it is possible to add the [VSCode extension](https://github.com/vivaxy/vscode-conventional-commits) to facilitate creating commits.
