@@ -8,6 +8,7 @@ A set of personal cheat sheets ready to use with [cheat](https://github.com/chea
 
 | Sheet name                                 | Description                       |
 | ------------------------------------------ | --------------------------------- |
+| [age](./commands/age)               | useful commands for age           |
 | [ansible](./commands/ansible)       | useful commands for ansible       |
 | [buildx](./commands/buildx)         | useful commands for docker buildx |
 | [gh](./commands/gh)                 | useful commands for gh            |
