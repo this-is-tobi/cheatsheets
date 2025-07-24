@@ -1,4 +1,4 @@
-# Pgrestore
+# Pg_restore
 
 ## Global
 

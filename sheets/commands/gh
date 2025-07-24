@@ -1,4 +1,4 @@
-# GitHub CLI (gh)
+# Gh
 
 ## Authentication
 

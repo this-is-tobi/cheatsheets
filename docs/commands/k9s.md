@@ -1,4 +1,4 @@
-# K9S
+# K9s
 
 ## Global
 

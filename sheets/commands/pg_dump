@@ -1,4 +1,4 @@
-# Pgdump
+# Pg_dump
 
 ## Global
 
